@@ -9,7 +9,7 @@ public class LoginPage {
 
     public LoginPage() {
         loginMap = new LoginMap();
-        PageFactory.initElements(Driver.getDriver(), LoginMap);
+        PageFactory.initElements(Driver.getDriver(), loginMap);
     }
 
     public void clickBtnLogin(){
