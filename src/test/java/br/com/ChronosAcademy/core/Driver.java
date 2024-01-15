@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class Driver {
-    private WebDriver driver;
+    private static WebDriver driver;
     public Driver(String navegador){
         switch (navegador) {
             case "chrome":
@@ -38,7 +38,7 @@ public class Driver {
 
 
 
-    public WebDriver getDriver(){
+    public static WebDriver getDriver(){
     return driver;
 
 
