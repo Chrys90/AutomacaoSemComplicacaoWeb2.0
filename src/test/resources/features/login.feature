@@ -1,72 +1,55 @@
 #language:pt
 
 Funcionalidade: Login
-  Contexto: Dado que a modal esteja aberta
+  Contexto:
+    Dado que a modal esteja sendo exibida
 
 
   Cenario: Fechar modal ao clicar no icone fechar
+    Quando for realizado um clique no icone de fechar da modal
+    Entao a janela da modal deve ser fechada
 
-    Quando clicar no icone fechar da modal
-    Entao a modal de login deve ser fechada
+  Cenario: Fechar modal ao clicar fora da mesma
+    Quando for realizado um clique fora da modal
+    Entao a janela de modal deve ser fechada
 
-  Cenario: Fechar modal ao clicar fora da modal
+  Cenario: Link create new account
+    Quando for realizado um clique no link do Create new Account
+    Entao a pagina do create new account deve ser exibida
 
-    Quando clicar no fora da modal
-    Entao a modal de login deve ser fechada
-
-  Cenario: Efetuar validacao do link create new account
-
-    Quando clicar em Create new Account
-    Entao deve ser apresentada a tela para cadastro de novo login
-
-  Cenario: Realizar login com todos os campos
-
+  Esquema do Cenario: Realizar login com <identificacao>
     Quando informar os campos de login e senha
-      | login | chronos |
-      | senha | senha |
-      | Remember | true |
-    E clicar no botao sign in
-    Entao deve ser apresentado a pagina do usuario logado no sistema
+      | login | <login> |
+      | senha | <senha> |
+      | Remember | <remember> |
+    Quando clicar no botao sign in
+    Entao deve ser possivel logar no sistema
+    Exemplos:
+     |identificacao | login | senha | remember |
+     |campos obrigatorios | chronos | senha | false |
+     |todos os campos | chronos | senha | true |
 
-  Cenario: Realizar login com campos obrigatorios
+  Esquema do Cenario: : Realizar login com <identificacao>
+    Quando os campos de login sejam preenchidos da seguinte forma
+      | login | <login> |
+      | senha | <senha> |
+      | Remember | <remember> |
+    Quando for realizado o clique no botao sign in
+    Entao o sistema deve exibir uma mensagem de erro
+    Exemplos:
+    |identificacao  | login | senha | remember |
+    |usuario invalido  | invalido | senha | false |
+    |senha invalida  | chronos | invalida | false |
 
-    Quando informar os campos de login e senha
-      | login | chronos |
-      | senha | senha |
-      | Remember | false |
-    E clicar no botao sign in
-    Entao deve ser apresentado a pagina do usuario logado no sistema
 
-  Cenario: Realizar login com usuario invalido
+  Esquema do Cenario: Realizar login com <identificao>
+    Quando os campos de login sejam preenchidos da seguinte forma
+      | login |  <login>       |
+      | senha | <senha>	  |
+      | Remember | <remember> |
+   Entao o botao sign in deve permanecer desabilitado
+    Exemplos:
+   |identificao   | login | senha | remember |
+   |usuario em branco   |  | senha | false |
+   |senha em branco   | chronos |  | false |
 
-    Quando informar usuario invalido
-      | login | invalido |
-      | senha | senha |
-      | Remember | false |
-    E clicar no botao sign in
-    Entao deve ser apresentado mensagem de erro informando que o usuario ou senha esta incorreto
-
-  Cenario: Realizar login com senha invalida
-
-    Quando informar senha invalida
-      | login | chronos |
-      | senha | invalida |
-      | Remember | false |
-    E clicar no botao sign in
-    Entao deve ser apresentado mensagem de erro informando que o usuario ou senha esta incorreto
-
-  Cenario: Realizar login com campo senha em branco
-
-    Quando informar senha em branco
-      | login | chronos |
-      | senha | 		  |
-      | Remember | false |
-    Entao o botao sign in deve permanecer desabilitado
-
-  Cenario: Realizar login com campo usuario em branco
-
-    Quando informar senha em branco
-      | login |         |
-      | senha | senha	  |
-      | Remember | false |
-    Entao o botao sign in deve permanecer desabilitado
