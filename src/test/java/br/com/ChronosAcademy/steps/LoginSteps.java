@@ -1,80 +1,79 @@
 package br.com.ChronosAcademy.steps;
 
 import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 
 public class LoginSteps {
-    @Dado("que a modal esteja aberta")
-    public void queAModalEstejaAberta() {
+
+    @Dado("que a modal esteja sendo exibida")
+    public void queAModalEstejaSendoExibida() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-    @Quando("clicar no icone fechar da modal")
-    public void clicarNoIconeFecharDaModal() {
+    @Quando("for realizado um clique no icone de fechar da modal")
+    public void forRealizadoUmCliqueNoIconeDeFecharDaModal() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-    @Entao("a modal de login deve ser fechada")
-    public void aModalDeLoginDeveSerFechada() {
+    @Entao("a janela da modal deve ser fechada")
+    public void aJanelaDaModalDeveSerFechada() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
 
-    @Quando("clicar no fora da modal")
-    public void clicarNoForaDaModal() {
 
+    @Quando("for realizado um clique fora da modal")
+    public void forRealizadoUmCliqueForaDaModal() {
+        
     }
 
-    @Quando("clicar em Create new Account")
-    public void clicarEmCreateNewAccount() {
-
+    @Entao("a janela de modal deve ser fechada")
+    public void aJanelaDeModalDeveSerFechada() {
+        
     }
 
-    @Entao("deve ser apresentada a tela para cadastro de novo login")
-    public void deveSerApresentadaATelaParaCadastroDeNovoLogin() {
+    @Quando("for realizado um clique no link do Create new Account")
+    public void forRealizadoUmCliqueNoLinkDoCreateNewAccount() {
+        
+    }
 
+    @Entao("a pagina do create new account deve ser exibida")
+    public void aPaginaDoCreateNewAccountDeveSerExibida() {
+        
     }
 
     @Quando("informar os campos de login e senha")
     public void informarOsCamposDeLoginESenha() {
-
+        
     }
 
-    @E("clicar no botao sign in")
+    @Quando("clicar no botao sign in")
     public void clicarNoBotaoSignIn() {
-
+        
     }
 
-    @Entao("deve ser apresentado a pagina do usuario logado no sistema")
-    public void deveSerApresentadoAPaginaDoUsuarioLogadoNoSistema() {
-
+    @Entao("deve ser possivel logar no sistema")
+    public void deveSerPossivelLogarNoSistema() {
+        
     }
 
-    @Quando("informar usuario invalido")
-    public void informarUsuarioInvalido() {
-
+    @Quando("os campos de login sejam preenchidos da seguinte forma")
+    public void osCamposDeLoginSejamPreenchidosDaSeguinteForma() {
+        
     }
 
-
-    @Quando("informar senha invalida")
-    public void informarSenhaInvalida() {
-
+    @Quando("for realizado o clique no botao sign in")
+    public void forRealizadoOCliqueNoBotaoSignIn() {
+        
     }
 
-    @Quando("informar senha em branco")
-    public void informarSenhaEmBranco() {
-
+    @Entao("o sistema deve exibir uma mensagem de erro")
+    public void oSistemaDeveExibirUmaMensagemDeErro() {
+        
     }
 
     @Entao("o botao sign in deve permanecer desabilitado")
     public void oBotaoSignInDevePermanecerDesabilitado() {
-
-    }
-
-
-    @Entao("deve ser apresentado mensagem de erro informando que o usuario ou senha esta incorreto")
-    public void deveSerApresentadoMensagemDeErroInformandoQueOUsuarioOuSenhaEstaIncorreto() {
     }
 }
