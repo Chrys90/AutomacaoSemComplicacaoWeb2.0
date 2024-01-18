@@ -4,7 +4,7 @@ Funcionalidade: Login
   Contexto:
     Dado que a modal esteja sendo exibida
 
-
+@fecharModal
   Cenario: Fechar modal ao clicar no icone fechar
     Quando for realizado um clique no icone de fechar da modal
     Entao a janela da modal deve ser fechada
@@ -29,7 +29,7 @@ Funcionalidade: Login
      |campos obrigatorios | chronos | senha | false |
      |todos os campos | chronos | senha | true |
 
-  Esquema do Cenario: : Realizar login com <identificacao>
+  Esquema do Cenario: Realizar login com <identificacao>
     Quando os campos de login sejam preenchidos da seguinte forma
       | login | <login> |
       | senha | <senha> |
