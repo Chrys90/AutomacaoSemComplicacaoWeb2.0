@@ -1,15 +1,22 @@
 package br.com.ChronosAcademy.steps;
 
 import br.com.ChronosAcademy.core.Driver;
+import br.com.ChronosAcademy.enums.Browser;
 import br.com.ChronosAcademy.pages.LoginPage;
+import br.com.ChronosAcademy.pages.NewAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.util.Map;
+import java.util.function.Function;
+
 
 public class LoginSteps {
 
@@ -17,7 +24,7 @@ public class LoginSteps {
 
     @Before
     public void iniciaNavegador(){
-        new Driver("chrome");
+        new Driver(Browser.CHROME);
     }
 
     @After
@@ -30,11 +37,12 @@ public class LoginSteps {
         Driver.getDriver().get("https://www.advantageonlineshopping.com/");
         loginPage = new LoginPage();
         loginPage.clickBtnLogin();
+        loginPage.visibilityOfBtnFechar();
+      //  loginPage.aguardaLoader();
     }
     @Quando("for realizado um clique no icone de fechar da modal")
     public void forRealizadoUmCliqueNoIconeDeFecharDaModal() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Entao("a janela da modal deve ser fechada")
     public void aJanelaDaModalDeveSerFechada() throws Exception {
@@ -63,7 +71,9 @@ public class LoginSteps {
 
     @Entao("a pagina do create new account deve ser exibida")
     public void aPaginaDoCreateNewAccountDeveSerExibida() {
-        
+        NewAccountPage newAccountPage = new NewAccountPage();
+        Assert.assertEquals("CREATE ACCOUNT", newAccountPage.getTextNewAccount());
+        loginPage.aguardaLoader();
     }
 
     @Quando("informar os campos de login e senha")
@@ -88,7 +98,7 @@ public class LoginSteps {
         boolean remember = Boolean.parseBoolean(map.get("remember"));
 
         loginPage.setInpUserName(login);
-        loginPage.setInpPassword("senha");
+        loginPage.setInpPassword(senha);
         if (remember)loginPage.clickInpRemember();
     }
 
@@ -106,7 +116,6 @@ public class LoginSteps {
     public void oBotaoSignInDevePermanecerDesabilitado() {
         boolean enabled = loginPage.isBtnSignIn();
         Assert.assertFalse(enabled);
-
     }
 
 
