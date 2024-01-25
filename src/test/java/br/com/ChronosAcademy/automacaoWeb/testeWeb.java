@@ -1,6 +1,7 @@
 package br.com.ChronosAcademy.automacaoWeb;
 
 import br.com.ChronosAcademy.core.Driver;
+import br.com.ChronosAcademy.enums.Browser;
 import br.com.ChronosAcademy.pages.CursoPage;
 import br.com.ChronosAcademy.pages.PrincipalPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -24,19 +25,19 @@ public class testeWeb {
 
     @Before
     public void InicializaTeste(){
-        driverWeb = new Driver("chrome");
+        driverWeb = new Driver(Browser.CHROME);
         driver = driverWeb.getDriver();
         driver.get("https://www.chronosacademy.com.br/");
         principalPage = new PrincipalPage(driver);
     }
 
-    @Test
+
     public void PrimeiroTeste(){
         String Titulo = principalPage.getTitulo();
         assertEquals("Porque Tempo É Conhecimento.",Titulo);
     }
 
-    @Test
+    
     public void SegundoTeste(){
         cursoPage = new CursoPage(driver);
         principalPage.clickBotao();

@@ -12,57 +12,66 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(), loginMap);
     }
 
-    public void clickBtnLogin(){
-        Driver.invisibilityOf(loginMap.btnlogin);
+    public void clickBtnLogin() {
+        Driver.visibilityOf(loginMap.btnlogin);
         loginMap.btnlogin.click();
     }
 
-    public void clickBtnFechar(){
+    public void clickBtnFechar() {
         loginMap.bntFechar.click();
     }
 
-    public void clickDivFecharModal(){
+    public void clickDivFecharModal() {
         loginMap.divFechaModal.click();
     }
 
-    public void setInpUserName(String username){
+    public void setInpUserName(String username) {
         if (username != null) {
             loginMap.inpUserName.sendKeys(username);
         }
     }
 
-    public void setInpPassword(String password){
+    public void setInpPassword(String password) {
         if (password != null) {
             loginMap.inpPassword.sendKeys(password);
         }
     }
 
-    public void clickInpRemember(){
+    public void clickInpRemember() {
         loginMap.inpRemember.click();
     }
 
-    public void clickLinkCreateAccount(){
+    public void clickLinkCreateAccount() {
         loginMap.linkCreateAccount.click();
     }
 
 
-    public void clickBtnSignIn(){
+    public void clickBtnSignIn() {
         loginMap.btnSignIn.click();
     }
 
-    public boolean isBtnSignIn(){
-       return loginMap.btnSignIn.isEnabled();
+    public boolean isBtnSignIn() {
+        return loginMap.btnSignIn.isEnabled();
     }
 
-    public void visibilityOfBtnFechar(){
+    public void visibilityOfBtnFechar() {
         Driver.visibilityOf(loginMap.bntFechar);
     }
 
-    public void invisibilityOfBtnFechar(){
+    public void invisibilityOfBtnFechar() {
         Driver.invisibilityOf(loginMap.bntFechar);
     }
 
     public void aguardaLoader(){
-        Driver.atributeChange(loginMap.divLoader, "diplay", "none");
+        Driver.attributeChange(loginMap.divLoader, "display", "none");
+    }
+    public String getUsuarioLogado() {
+        Driver.visibilityOf(loginMap.textLogado);
+        return loginMap.textLogado.getText();
+    }
+
+    public String getErroLogin(){
+        Driver.visibilityOf(loginMap.textErroLogin);
+        return loginMap.textErroLogin.getText();
     }
 }
