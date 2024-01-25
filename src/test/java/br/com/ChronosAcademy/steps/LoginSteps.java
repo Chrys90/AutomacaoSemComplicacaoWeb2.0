@@ -21,6 +21,7 @@ import java.util.function.Function;
 public class LoginSteps {
 
     LoginPage loginPage;
+    String login;
 
     @Before
     public void iniciaNavegador(){
@@ -38,11 +39,11 @@ public class LoginSteps {
         loginPage = new LoginPage();
         loginPage.clickBtnLogin();
         loginPage.visibilityOfBtnFechar();
-      //  loginPage.aguardaLoader();
+        loginPage.aguardaLoader();
     }
     @Quando("for realizado um clique no icone de fechar da modal")
     public void forRealizadoUmCliqueNoIconeDeFecharDaModal() {
-
+        loginPage.clickBtnFechar();
     }
     @Entao("a janela da modal deve ser fechada")
     public void aJanelaDaModalDeveSerFechada() throws Exception {
@@ -83,23 +84,25 @@ public class LoginSteps {
 
     @Quando("clicar no botao sign in")
     public void clicarNoBotaoSignIn() {
-        
+        loginPage.clickBtnSignIn();
     }
 
     @Entao("deve ser possivel logar no sistema")
     public void deveSerPossivelLogarNoSistema() {
-        
+        Assert.assertEquals(login, loginPage.getUsuarioLogado());
     }
 
     @Quando("os campos de login sejam preenchidos da seguinte forma")
     public void osCamposDeLoginSejamPreenchidosDaSeguinteForma(Map<String, String> map) {
-        String login = map.get("login");
+
+        login = map.get("login");
         String senha = map.get("senha");
         boolean remember = Boolean.parseBoolean(map.get("remember"));
 
         loginPage.setInpUserName(login);
         loginPage.setInpPassword(senha);
         if (remember)loginPage.clickInpRemember();
+
     }
 
     @Quando("for realizado o clique no botao sign in")
@@ -109,7 +112,7 @@ public class LoginSteps {
 
     @Entao("o sistema deve exibir uma mensagem de erro")
     public void oSistemaDeveExibirUmaMensagemDeErro() {
-        
+        Assert.assertEquals("Incorrect user name or password.", loginPage.getErroLogin());
     }
 
     @Entao("o botao sign in deve permanecer desabilitado")
