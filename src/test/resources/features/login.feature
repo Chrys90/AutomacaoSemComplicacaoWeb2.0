@@ -30,11 +30,11 @@ Funcionalidade: Login
     Entao deve ser possivel logar no sistema
     Exemplos:
       | identificacao       | login   | senha   | remember |
-      | campos obrigatorios | chronos | Senha@1 | false    |
-      | todos os campos     | chronos | Senha@1 | true     |
+      | campos obrigatorios | chrys34 | Senha@1 | false    |
+      | todos os campos     | chrys34 | Senha@1 | true     |
 
   @loginInvalido
-  Esquema do Cenario: Realizar login com <identificacao>
+  Esquema do Cenario: Realizar login invalido com <identificacao>
     Quando os campos de login sejam preenchidos da seguinte forma
       | login    | <login>    |
       | senha    | <senha>    |
@@ -44,10 +44,10 @@ Funcionalidade: Login
     Exemplos:
       | identificacao    | login    | senha    | remember |
       | usuario invalido | invalido | Senha@1  | false    |
-      | senha invalida   | chronos  | invalida | false    |
+      | senha invalida   | chrys34  | invalida | false    |
 
   @dadosEmBranco
-  Esquema do Cenario: Realizar login com <identificao>
+  Esquema do Cenario: Realizar login em branco com <identificao>
     Quando os campos de login sejam preenchidos da seguinte forma
       | login    | <login>    |
       | senha    | <senha>    |
@@ -56,5 +56,5 @@ Funcionalidade: Login
     Exemplos:
       | identificao       | login   | senha   | remember |
       | usuario em branco |         | Senha@1 | false    |
-      | senha em branco   | chronos |         | false    |
+      | senha em branco   | chrys34 |         | false    |
 
