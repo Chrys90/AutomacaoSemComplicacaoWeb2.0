@@ -23,7 +23,7 @@ import java.util.function.Function;
 public class LoginSteps {
 
     LoginPage loginPage;
-    String login;
+    String username;
 
     @Before
     public void iniciaNavegador(Scenario cenario) {
@@ -93,10 +93,6 @@ public class LoginSteps {
         Driver.printScreen("tela create account");
     }
 
-    @Quando("informar os campos de login e senha")
-    public void informarOsCamposDeLoginESenha() {
-
-    }
 
     @Quando("clicar no botao sign in")
     public void clicarNoBotaoSignIn() {
@@ -105,19 +101,19 @@ public class LoginSteps {
 
     @Entao("deve ser possivel logar no sistema")
     public void deveSerPossivelLogarNoSistema() throws IOException {
-        Assert.assertEquals(login, loginPage.getUsuarioLogado());
+        Assert.assertEquals(username, loginPage.getUsuarioLogado());
         Driver.printScreen("logado no sistema");
     }
 
     @Quando("os campos de login sejam preenchidos da seguinte forma")
     public void osCamposDeLoginSejamPreenchidosDaSeguinteForma(Map<String, String> map) throws IOException {
 
-        login = map.get("login");
-        String senha = map.get("senha");
+        username = map.get("username");
+        String password = map.get("password");
         boolean remember = Boolean.parseBoolean(map.get("remember"));
 
-        loginPage.setInpUserName(login);
-        loginPage.setInpPassword(senha);
+        loginPage.setInpUserName(username);
+        loginPage.setInpPassword(password);
         if (remember) loginPage.clickInpRemember();
 
         Driver.printScreen("preenchimento dos campos de login");
@@ -140,6 +136,14 @@ public class LoginSteps {
         boolean enabled = loginPage.isBtnSignIn();
         Assert.assertFalse(enabled);
         Driver.printScreen("sign desabilitado");
+    }
+
+    @Dado("que esteja logado no sistema com")
+    public void queEstejaLogadoNoSistemaCom(Map<String,String>map) throws IOException {
+        queAModalEstejaSendoExibida();
+        osCamposDeLoginSejamPreenchidosDaSeguinteForma(map);
+        forRealizadoOCliqueNoBotaoSignIn();
+        deveSerPossivelLogarNoSistema();
     }
 
 
