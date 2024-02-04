@@ -1,5 +1,6 @@
  #language:pt
 
+ @CRUD
  Funcionalidade: Account CRUD
 
    @cadastroConta
@@ -23,9 +24,25 @@
      Quando clicar no botao sign in
      Entao deve ser possivel logar no sistema
 
-     @alteracaoCRUD
-     Cenario: Realizar alteração na conta
+   @alteracaoCRUD
+   Cenario: Realizar alteração na conta
+     Dado que esteja logado no sistema com
+       | username | chronosChrys |
+       | password | Senha123     |
+       | Remember | false        |
+     Dado que esteja na pagina de alteracao da conta
+     Quando altero os valores do seguintes campos:
+       | firstname | Chronos |
+       | lastname  | Teste   |
+     Quando for realizado o clique no botao salvar
+     Entao a alteracao foi exibida na pagina myAccount
+
+     @exclusaoCRUD
+     Cenario: Realizar exclusao da conta
        Dado que esteja logado no sistema com
          | username | chronosChrys |
          | password | Senha123     |
          | Remember | false        |
+       Dado que esteja na pagina myAccount
+       Quando for efetuado a acao do clique delete e em yes
+       Entao o usuario deve ser deletado
